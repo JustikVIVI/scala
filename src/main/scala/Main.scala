@@ -11,9 +11,9 @@ object Main {
     val ar3 = Array.from(List(9,2,6,3))
     val ar4 = Array.from(List(0,3,1,0))
 
-    val grid = Array.from(List(ar1, ar2, ar3, ar4))
+    val diamond = new TestClass()
 
-    print (leetcodeTasks.maxIncreaseKeepingSkyline(grid))
+    print(diamond.get)
   }
 
   //some support functions
