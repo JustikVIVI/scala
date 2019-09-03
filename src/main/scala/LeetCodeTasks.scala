@@ -96,4 +96,44 @@ class LeetCodeTasks {
   def toLowerCase(str: String): String = {
     str.map(c => c.toLower)
   }
+
+  /**
+    * Medium
+    *
+    * https://leetcode.com/problems/max-increase-to-keep-city-skyline/
+    *
+    * In a 2 dimensional array grid, each value grid[i][j] represents the height of a building located there. We are allowed to increase the height of any number of buildings, by any amount (the amounts can be different for different buildings). Height 0 is considered to be a building as well.
+    *
+    * At the end, the "skyline" when viewed from all four directions of the grid, i.e. top, bottom, left, and right, must be the same as the skyline of the original grid. A city's skyline is the outer contour of the rectangles formed by all the buildings when viewed from a distance. See the following example.
+    *
+    * What is the maximum total sum that the height of the buildings can be increased?
+    *
+    * Runtime: 304 ms, faster than 82.35% of Scala online submissions for Max Increase to Keep City Skyline.
+    * Memory Usage: 51.5 MB, less than 100.00% of Scala online submissions for Max Increase to Keep City Skyline.
+    *
+    * @param grid 2 dimensional array grid, each value grid[i][j] represents the height of a building located there
+    * @return maximum total sum that the height of the buildings can be increased
+    */
+  def maxIncreaseKeepingSkyline(grid: Array[Array[Int]]): Int = {
+    val horizontalView = new Array[Int](grid.length)
+    val verticalView = new Array[Int](grid(0).length)
+
+    var counter = 0
+
+    for (i <- grid.indices) {
+      horizontalView(i) = grid(i).max
+    }
+
+    for (i <- grid(0).indices) {
+      verticalView(i) = getCol(i, grid).max
+    }
+
+    for (i <- grid.indices; j <- grid(0).indices) {
+      val min = Math.min(verticalView(j), horizontalView(i))
+      counter = counter + min - grid(i)(j)
+    }
+    counter
+  }
+
+  private def getCol(n: Int, a: Array[Array[Int]]) = a.map{_(n)}
 }

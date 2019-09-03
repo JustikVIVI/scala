@@ -6,9 +6,14 @@ object Main {
 
   def main(args: Array[String]): Unit = {
     val leetcodeTasks = new LeetCodeTasks()
-    val ar = Array.from(List(-4,-1,0,3,10))
+    val ar1 = Array.from(List(3,0,8,4))
+    val ar2 = Array.from(List(2,4,5,7))
+    val ar3 = Array.from(List(9,2,6,3))
+    val ar4 = Array.from(List(0,3,1,0))
 
-    printArray(leetcodeTasks.sortedSquares(ar))
+    val grid = Array.from(List(ar1, ar2, ar3, ar4))
+
+    print (leetcodeTasks.maxIncreaseKeepingSkyline(grid))
   }
 
   //some support functions
