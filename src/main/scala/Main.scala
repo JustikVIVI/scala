@@ -9,11 +9,9 @@ object Main {
     val ar1 = Array.from(List(3,0,8,4))
     val ar2 = Array.from(List(2,4,5,7))
     val ar3 = Array.from(List(9,2,6,3))
-    val ar4 = Array.from(List(0,3,1,0))
+    val ar4 = Array.from(List(1,2,3,4))
 
-    val diamond = new TestClass()
-
-    print(diamond.get)
+    printArray(leetcodeTasks.productExceptSelf(ar4))
   }
 
   //some support functions

@@ -136,4 +136,39 @@ class LeetCodeTasks {
   }
 
   private def getCol(n: Int, a: Array[Array[Int]]) = a.map{_(n)}
+
+  /**
+    * Medium
+    *
+    * FIXME: NOT WORKING ATM
+    *
+    * Given an array nums of n integers where n > 1,
+    * return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].
+    *
+    * Note: Please solve it without division and in O(n).
+    *
+    * @param nums array nums of n integers where n > 1
+    * @return an array output such that output[i] is equal to the product of all the elements of nums except nums[i]
+    */
+  def productExceptSelf(nums: Array[Int]): Array[Int] = {
+    val left = Array.fill(nums.length){ 1 }
+    val right = Array.fill(nums.length){ 1 }
+    val answer = Array.fill(nums.length){ 1 }
+
+    left(0) = 1
+    for (i <- 1 until nums.length) {
+      left(i) = nums(i - 1) * left(i - 1)
+    }
+
+    right(nums.length - 1) = 1
+    for (i <- nums.length - 2 until  0 by -1) {
+      right(i) = nums(i + 1) * right(i + 1)
+    }
+
+    for (i <- nums.indices) {
+      answer(i) = left(i) * right(i)
+    }
+
+    answer
+  }
 }
